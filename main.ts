@@ -1,10 +1,10 @@
-function boyer_moore(text, pattern, n, m){
+function boyer_moore(text: string, pattern: string, n: number, m: number){
     
-    let table = {};
+    let table: {[key: string]: number} = {};
 
-    let occurences = [];
+    let occurences: number[] = [];
     
-    for (let i = 0; i < m; i++){
+    for (let i: number = 0; i < m; i++){
 
         if ( i === m - 1 && !(pattern[i] in table) ){
             table[ pattern ] = m;
@@ -17,11 +17,11 @@ function boyer_moore(text, pattern, n, m){
         }
     }
 
-    let start = 0;
+    let start: number = 0;
 
     while (start + m <= n){
 
-        let flag = true;
+        let flag: boolean = true;
 
         for (let i = m-1; i >= 0; i--){
             if (text[start + i] !== pattern[i]){
@@ -47,4 +47,4 @@ function boyer_moore(text, pattern, n, m){
 }
 
 
-console.log( boyer_moore("ratatat", "tat", 7,3) ) ; 
+console.log( boyer_moore("ratatat", "tat", 7,3) ); 
